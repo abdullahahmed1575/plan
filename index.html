@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fiverr Star — Project Delivery Timeline</title>
+<title>Fiverr Star — 2-Week Delivery Plan</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
@@ -21,9 +21,7 @@
 
     --w1: #4f8cff;
     --w2: #a855f7;
-    --w3: #22c55e;
-    --w4: #f59e0b;
-    --w5: #ef4444;
+    --launch: #ef4444;
     --milestone: #fbbf24;
   }
 
@@ -68,6 +66,17 @@
     position: relative;
     z-index: 1;
   }
+  .hero .scope-note {
+    margin-top: 14px;
+    display: inline-block;
+    background: var(--bg-2);
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    font-size: 12px;
+    padding: 8px 16px;
+    border-radius: 999px;
+  }
+  .hero .scope-note strong { color: var(--text); font-weight: 600; }
 
   /* Meta badges */
   .meta-row {
@@ -156,6 +165,51 @@
     border-radius: 1px;
   }
 
+  /* Module Cards */
+  .modules-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 14px;
+    padding: 0 48px 32px;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  .module-card {
+    background: var(--bg-1);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 18px 20px;
+    transition: all 0.2s;
+  }
+  .module-card:hover {
+    border-color: var(--border-hover);
+    transform: translateY(-1px);
+  }
+  .module-card .mc-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, var(--w1), var(--w2));
+    color: #fff;
+    font-weight: 700;
+    font-size: 13px;
+    margin-bottom: 10px;
+  }
+  .module-card h4 {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+  .module-card p {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.55;
+  }
+
   /* Stats */
   .stats-grid {
     display: grid;
@@ -192,6 +246,17 @@
     letter-spacing: 0.5px;
   }
 
+  /* Section heading */
+  .section-title {
+    text-align: center;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 24px 48px 16px;
+  }
+
   /* Gantt wrapper */
   .gantt-outer {
     padding: 0 0 80px;
@@ -209,8 +274,8 @@
   /* The grid */
   .gantt-grid {
     display: grid;
-    grid-template-columns: 260px repeat(32, 72px);
-    min-width: 2564px; /* 260 + 32*72 */
+    grid-template-columns: 260px repeat(14, 84px);
+    min-width: 1436px; /* 260 + 14*84 */
     position: relative;
   }
 
@@ -393,7 +458,7 @@
     opacity: 1;
   }
   .bar .bar-text {
-    opacity: 0.7;
+    opacity: 0.85;
     transition: opacity 0.15s;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -510,7 +575,7 @@
   .footer-bar .fb-fill {
     height: 100%;
     border-radius: 3px;
-    background: linear-gradient(90deg, var(--w1), var(--w2), var(--w3));
+    background: linear-gradient(90deg, var(--w1), var(--w2), var(--launch));
     width: 0%;
     transition: width 0.6s ease;
   }
@@ -533,10 +598,10 @@
   @media (max-width: 768px) {
     .hero { padding: 32px 20px 12px; }
     .hero h1 { font-size: 28px; }
-    .meta-row, .controls, .legend, .stats-grid { padding-left: 20px; padding-right: 20px; }
+    .meta-row, .controls, .legend, .stats-grid, .modules-grid { padding-left: 20px; padding-right: 20px; }
     .stats-grid { grid-template-columns: repeat(2, 1fr); }
     .task-label { padding: 8px 10px; min-width: 160px; }
-    .gantt-grid { grid-template-columns: 160px repeat(32, 56px); min-width: 1932px; }
+    .gantt-grid { grid-template-columns: 160px repeat(14, 64px); min-width: 1056px; }
     .footer-bar { padding: 10px 20px; }
   }
 </style>
@@ -545,37 +610,36 @@
 
 <div class="hero">
   <h1>Fiverr Star</h1>
-  <p>Project Delivery Timeline — 32 Days to Launch</p>
+  <p>Revised 2-Week Delivery Plan — 14 Days to Launch</p>
+  <div class="scope-note">Simplified scope · No AI integration · <strong>PayPal + Payoneer</strong> only</div>
 </div>
 
 <div class="meta-row">
-  <div class="meta-item"><div class="meta-dot" style="background:var(--w1)"></div><strong>Week 1</strong> Foundation & Marketing</div>
-  <div class="meta-item"><div class="meta-dot" style="background:var(--w2)"></div><strong>Week 2</strong> Shop & Cart</div>
-  <div class="meta-item"><div class="meta-dot" style="background:var(--w3)"></div><strong>Week 3</strong> Checkout & Seller</div>
-  <div class="meta-item"><div class="meta-dot" style="background:var(--w4)"></div><strong>Week 4</strong> Admin & Seller P2</div>
-  <div class="meta-item"><div class="meta-dot" style="background:var(--w5)"></div><strong>Launch</strong> Final Days</div>
+  <div class="meta-item"><div class="meta-dot" style="background:var(--w1)"></div><strong>Week 1</strong> Static Pages, Shop & Talent</div>
+  <div class="meta-item"><div class="meta-dot" style="background:var(--w2)"></div><strong>Week 2</strong> Cart, Payments & Dashboards</div>
+  <div class="meta-item"><div class="meta-dot" style="background:var(--launch)"></div><strong>Day 14</strong> Launch</div>
 </div>
+
+<div class="section-title">Core Modules</div>
+<div class="modules-grid" id="modulesGrid"></div>
 
 <div class="controls" id="controls">
   <button class="btn active" onclick="filterWeek('all',this)">All</button>
   <button class="btn" onclick="filterWeek(1,this)">Week 1</button>
   <button class="btn" onclick="filterWeek(2,this)">Week 2</button>
-  <button class="btn" onclick="filterWeek(3,this)">Week 3</button>
-  <button class="btn" onclick="filterWeek(4,this)">Week 4</button>
-  <button class="btn" onclick="filterWeek(5,this)">Launch</button>
   <button class="btn" onclick="toggleDeps()" id="depBtn">Show Dependencies</button>
 </div>
 
 <div class="legend">
   <div class="legend-item"><div class="legend-bar" style="background:var(--w1)"></div>Week 1</div>
   <div class="legend-item"><div class="legend-bar" style="background:var(--w2)"></div>Week 2</div>
-  <div class="legend-item"><div class="legend-bar" style="background:var(--w3)"></div>Week 3</div>
-  <div class="legend-item"><div class="legend-bar" style="background:var(--w4)"></div>Week 4</div>
-  <div class="legend-item"><div class="legend-bar" style="background:var(--w5)"></div>Launch</div>
+  <div class="legend-item"><div class="legend-bar" style="background:var(--launch)"></div>Launch Day</div>
   <div class="legend-item"><div class="legend-diamond"></div>Milestone</div>
 </div>
 
 <div class="stats-grid" id="statsBar"></div>
+
+<div class="section-title">Day-by-Day Schedule</div>
 
 <div class="gantt-outer">
   <div class="gantt-scroll">
@@ -596,226 +660,220 @@
 <div id="tooltip"></div>
 
 <script>
-const W = 72;
+const W = 84;
 const LABEL_W = 260;
 const ROW_H = 52;
+const TOTAL_DAYS = 14;
 
-const weeks = [
-  { num:1, name:'Foundation & Public Marketing Pages', color:'#4f8cff', startDay:1, endDay:7 },
-  { num:2, name:'Shop, Cart & Contact', color:'#a855f7', startDay:8, endDay:14 },
-  { num:3, name:'Checkout + Seller Dashboard (Part 1)', color:'#22c55e', startDay:15, endDay:21 },
-  { num:4, name:'Seller (Part 2) + Admin', color:'#f59e0b', startDay:22, endDay:28 },
-  { num:5, name:'Launch Days', color:'#ef4444', startDay:29, endDay:32 }
+const modules = [
+  { n:1, title:'Static Pages', desc:'About Us, Contact, and a dynamic Home page built exactly to UI.' },
+  { n:2, title:'Shop & Filtering', desc:'Browse and filter content uploaded by contributors/designers.' },
+  { n:3, title:'Cart & Payments', desc:'Add to cart, cart UX, plus PayPal + Payoneer at checkout.' },
+  { n:4, title:'Designer Dashboard', desc:'Upload work, track order history, manage profile and content.' },
+  { n:5, title:'Admin Dashboard', desc:'Moderate and manage everything contributors upload.' },
+  { n:6, title:'Talent Profiles', desc:'Public talent pages so buyers can reach out to work directly.' }
 ];
 
-const weekColors = {1:'var(--w1)',2:'var(--w2)',3:'var(--w3)',4:'var(--w4)',5:'var(--w5)'};
-const weekRaw = {1:'#4f8cff',2:'#a855f7',3:'#22c55e',4:'#f59e0b',5:'#ef4444'};
+const weeks = [
+  { num:1, name:'Static Pages, Shop & Talent', color:'#4f8cff', startDay:1, endDay:7 },
+  { num:2, name:'Cart, Payments, Dashboards & Launch', color:'#a855f7', startDay:8, endDay:14 }
+];
+
+const weekColors = {1:'var(--w1)', 2:'var(--w2)'};
+const weekRaw = {1:'#4f8cff', 2:'#a855f7'};
+const LAUNCH_RAW = '#ef4444';
 
 const tasks = [
   {
-    id:'d1',day:1,duration:1,week:1,
+    id:'d1', day:1, duration:1, week:1,
     name:'Core Setup',
-    details:['Database + schema deployment','Secure user accounts (register, login, logout)','Header (responsive nav, role-aware, mobile drawer)','Footer (links, socials, newsletter placeholder)','Light/dark theme system','Toast notifications'],
+    details:[
+      'Database + schema deployment',
+      'User accounts (register, login, logout, password reset)',
+      'Responsive header with role-aware nav + mobile drawer',
+      'Footer (links, socials, newsletter placeholder)',
+      'Light/dark theme system',
+      'Toast notifications + base UI components'
+    ],
     deps:[]
   },
   {
-    id:'d2',day:2,duration:1,week:1,
-    name:'Home Page',
-    details:['Hero with main CTA','Top trending services grid → shop links','"Just Dropped" products (truncated + tooltip)','"How to edit a template" tutorial','Partners carousel','Bottom CTA strip'],
+    id:'d2', day:2, duration:1, week:1,
+    name:'Dynamic Home Page',
+    details:[
+      'Hero section with main CTA (per UI)',
+      'Top trending services grid → links into shop',
+      '"Just Dropped" newest products row',
+      '"How it works" tutorial section',
+      'Partners / logos carousel',
+      'Bottom CTA strip'
+    ],
     deps:['d1']
   },
   {
-    id:'d3',day:3,duration:1,week:1,
-    name:'About Page',
-    details:['Company info section','Stats with progress bars (Projects, Clients, Experience)','Team grid with photos, names, roles','"Read more" linking to CV pages'],
+    id:'d3', day:3, duration:1, week:1,
+    name:'About Us Page',
+    details:[
+      'Company info & story section',
+      'Stats with progress bars (Projects, Clients, Experience)',
+      'Team grid (photo, name, role)',
+      '"Read more" cards linking into Talent Profiles'
+    ],
     deps:['d1']
   },
   {
-    id:'d4',day:4,duration:1,week:1,
-    name:'Team CV Pages',
-    details:['Individual CV at /about/team/[slug]','Sections: bio, experience, skills, projects','Admin-managed team members'],
-    deps:['d3']
-  },
-  {
-    id:'d5',day:5,duration:1,week:1,
-    name:'Services Page',
-    details:['Numbered layout (01–10)','10 services from tracker','Each service arrow → shop redirect'],
-    deps:['d1']
-  },
-  {
-    id:'d6',day:6,duration:1,week:1,
-    name:'Portfolio Page',
-    details:['Branding portfolio gallery','Horizontal-only swipe carousel','Improved CTA + Share button UI','High-resolution images'],
-    deps:['d1']
-  },
-  {
-    id:'d7',day:7,duration:1,week:1,
-    name:'Portfolio Detail + Brand Guidelines',
-    details:['Project page at /portfolio/[slug]','Brand guidelines popup with scroll-lock','Image gallery, description, related work'],
-    deps:['d6']
-  },
-  {id:'m1',day:7,milestone:true,week:1,name:'🎯 Public marketing site live',details:['Preview link shared to client']},
-
-  {
-    id:'d8',day:8,duration:1,week:2,
+    id:'d4', day:4, duration:1, week:1,
     name:'Contact Page + Storage Setup',
-    details:['Contact: live chat, WhatsApp, form','Form → leads inbox','Cloudflare R2 storage','File upload component'],
+    details:[
+      'Simple contact form (name, email, subject, message)',
+      'Business email + social links',
+      'Form submissions → leads inbox',
+      'Cloudflare R2 (or S3) storage configured',
+      'Reusable file-upload component used across shop & dashboards'
+    ],
     deps:['d1']
   },
   {
-    id:'d9',day:9,duration:1,week:2,
-    name:'Shop Layout',
-    details:['Envato-style: centered search, bottom thumbnails','Left sidebar categories','Hover tooltips on collapsed sidebar','Bottom action bar: cart, login, exit, fav, 3-dot menu'],
+    id:'d5', day:5, duration:1, week:1,
+    name:'Shop Layout & Listing',
+    details:[
+      'Envato-style shop layout (centered search, sidebar categories)',
+      'Product card grid with hover preview',
+      'Bottom action bar (cart, login, favorites, menu)',
+      'Pagination / infinite scroll',
+      'Pulls live data from contributor uploads'
+    ],
+    deps:['d1']
+  },
+  {
+    id:'d6', day:6, duration:1, week:1,
+    name:'Shop Filters + Product Detail',
+    details:[
+      'Filter sidebar: Style, Color, Orientation, Format, Price',
+      'URL-synced filter state (shareable links)',
+      'Search bar with category scoping',
+      'Product detail page: gallery, description, format & license',
+      '"Add to Cart" + "Work with Designer" CTAs'
+    ],
     deps:['d5']
   },
   {
-    id:'d10',day:10,duration:1,week:2,
-    name:'Shop Filters & Search',
-    details:['Filter sidebar (Envato-inspired)','Multi-select: Style, Color, Orientation, Format','URL-synced filter state','Search bar','Pagination / infinite scroll'],
-    deps:['d9']
+    id:'d7', day:7, duration:1, week:1,
+    name:'Talent Profiles',
+    details:[
+      'Public designer/talent page at /talent/[slug]',
+      'Bio, skills, experience, portfolio gallery',
+      '"Contact this talent" form → leads inbox',
+      '"More from this designer" row tied to shop',
+      'Linked from About → team and Product → seller'
+    ],
+    deps:['d3','d6']
   },
+  { id:'m1', day:7, milestone:true, week:1, name:'🎯 Marketing site + Shop browsable', details:['Static pages, shop listing/filtering, and talent profiles all live in preview'] },
+
   {
-    id:'d11',day:11,duration:1,week:2,
-    name:'Product Detail Page',
-    details:['Image gallery with zoom','Title, description, price, format details','"Add to Cart" + "Work with Designer" CTA','File type info, license terms'],
-    deps:['d9']
-  },
-  {
-    id:'d12',day:12,duration:1,week:2,
-    name:'Logo Rich Tabs + Related Products',
-    details:['Brandfetch-style detail tabs: colors, typography, logo variations, usage','Related products sharing ≥1 filter','"More from this seller"'],
-    deps:['d11']
-  },
-  {
-    id:'d13',day:13,duration:1,week:2,
+    id:'d8', day:8, duration:1, week:2,
     name:'Shopping Cart',
-    details:['Cart page: line items, quantity, subtotal','Cookie-backed (guests) / DB-backed (logged in)','Add/remove/update actions','Favorites list'],
-    deps:['d11']
+    details:[
+      'Cart page: line items, quantity, subtotal',
+      'Cookie-backed for guests, DB-backed for logged-in users',
+      'Slide-in cart drawer with add-to-cart animations',
+      'Favorites / wishlist',
+      'Empty states + mobile cart UX'
+    ],
+    deps:['d6']
   },
   {
-    id:'d14',day:14,duration:1,week:2,
-    name:'Cart UX Polish',
-    details:['Cart drawer (slide-in)','Add-to-cart animations','Continue shopping / Checkout flow','Empty cart states','Mobile cart experience'],
-    deps:['d13']
+    id:'d9', day:9, duration:1, week:2,
+    name:'Checkout — PayPal + Payoneer',
+    details:[
+      'Checkout page: cart summary + billing form',
+      'PayPal Smart Buttons integration',
+      'Payoneer checkout flow integration',
+      'Guest checkout (no signup wall)',
+      'Silent account creation on first successful payment',
+      'Sandbox testing for both providers'
+    ],
+    deps:['d8']
   },
-  {id:'m2',day:14,milestone:true,week:2,name:'🎯 Buyer can browse, filter, view, cart',details:['Demo link shared']},
-
   {
-    id:'d15',day:15,duration:1,week:3,
-    name:'PayPal Checkout',
-    details:['Checkout page: cart summary, billing','PayPal Smart Buttons','Guest checkout (no signup required)','Silent account creation on payment','Sandbox testing'],
-    deps:['d14']
-  },
-  {
-    id:'d16',day:16,duration:1,week:3,
+    id:'d10', day:10, duration:1, week:2,
     name:'Order Confirmation + Downloads',
-    details:['Order success page','Receipt email with order details','Downloads page /orders/[id]/downloads','Account-activation email for guest buyers'],
-    deps:['d15']
+    details:[
+      'Order success page with summary',
+      'Receipt email with order details',
+      'Secure downloads page at /orders/[id]/downloads',
+      'Account-activation email for guest buyers (Etsy-style)'
+    ],
+    deps:['d9']
   },
-  {
-    id:'d17',day:17,duration:1,week:3,
-    name:'Seller: Home + Settings',
-    details:['Dashboard overview: sales, approvals, earnings, quick actions','Settings: profile, banner, bio, PayPal email, notifications'],
-    deps:['d1']
-  },
-  {
-    id:'d18',day:18,duration:1,week:3,
-    name:'Seller: Products + Media',
-    details:['Products list with status badges (pending/approved/rejected)','Upload form (Shutterstock-style) with filter pickers','10 files/day limit','Media library — reusable assets'],
-    deps:['d17']
-  },
-  {
-    id:'d19',day:19,duration:1,week:3,
-    name:'Seller: Orders + Payments',
-    details:['Orders received: buyer info, product, amount, date, status','Payments: transaction history, payout schedule, status'],
-    deps:['d16','d17']
-  },
-  {
-    id:'d20',day:20,duration:1,week:3,
-    name:'Seller: Customers + Reviews',
-    details:['Customers list (privacy-respecting)','Reviews: product reviews, ratings, reply to reviews'],
-    deps:['d17']
-  },
-  {
-    id:'d21',day:21,duration:1,week:3,
-    name:'Seller: Coupons',
-    details:['Create discount codes (% off or fixed)','Validity period, usage limit, applicable products','Buyer-side coupon entry at checkout','Discount calculation in cart'],
-    deps:['d15','d17']
-  },
-  {id:'m3',day:21,milestone:true,week:3,name:'🎯 Full purchase loop tested',details:['Half of seller dashboard live']},
+  { id:'m2', day:10, milestone:true, week:2, name:'🎯 End-to-end purchase tested', details:['Buyer can browse → cart → pay (PayPal & Payoneer) → download'] },
 
   {
-    id:'d22',day:22,duration:1,week:4,
-    name:'Seller: Refund',
-    details:['Buyer-side refund request UI','Seller approval/decline workflow','PayPal refund API integration','Refund status tracking'],
-    deps:['d19']
+    id:'d11', day:11, duration:1, week:2,
+    name:'Designer Dashboard — Profile & Uploads',
+    details:[
+      'Dashboard home: sales, approvals, earnings snapshot',
+      'Profile/settings: bio, banner, PayPal/Payoneer payout email',
+      'Content management: products list with status badges',
+      'Upload form with category & filter pickers',
+      'Media library for reusable assets'
+    ],
+    deps:['d1','d5']
   },
   {
-    id:'d23',day:23,duration:1,week:4,
-    name:'Seller: Ledger Book',
-    details:['Transaction history (credits, debits, refunds, payouts)','Running balance','Filter by date range and type','CSV export'],
-    deps:['d19']
+    id:'d12', day:12, duration:1, week:2,
+    name:'Designer Dashboard — Orders & Payments',
+    details:[
+      'Orders received: buyer, product, amount, date, status',
+      'Order history with filters and CSV export',
+      'Reviews & ratings (read + reply)',
+      'Earnings + payout schedule view',
+      'Customer messages from "Work with Designer" CTA'
+    ],
+    deps:['d10','d11']
   },
   {
-    id:'d24',day:24,duration:1,week:4,
-    name:'Seller: Reports',
-    details:['Sales chart (revenue over time)','Top-selling products','Conversion metrics (views → sales)','Earnings breakdown','PDF/CSV export'],
-    deps:['d23']
+    id:'d13', day:13, duration:1, week:2,
+    name:'Admin Dashboard',
+    details:[
+      'Approvals queue for contributor uploads (preview + approve/reject with reason)',
+      'Users management: list, filter by role, suspend/activate',
+      'Talent CRUD (manage public talent profiles + bios)',
+      'Leads inbox (Contact form + Talent contact form)',
+      'Payouts: PayPal Payouts + Payoneer manual/scheduled',
+      'Platform-wide stats: revenue, sellers, products, orders'
+    ],
+    deps:['d4','d7','d11','d12']
   },
   {
-    id:'d25',day:25,duration:1,week:4,
-    name:'Admin: Approvals + Portfolio',
-    details:['Approvals queue with preview','Approve/reject with reason','Bulk actions','Portfolio CRUD (Behance-inspired)'],
-    deps:['d18']
+    id:'d14', day:14, duration:1, week:2,
+    name:'🚀 QA, Polish & Launch',
+    details:[
+      'Critical-path testing (browse → buy → download → admin moderate)',
+      'Cross-browser (Chrome, Safari, Firefox, Edge) + mobile sweep',
+      'SEO: meta, sitemap, robots, JSON-LD, OG images',
+      'Lighthouse pass + image optimization',
+      'Production deploy (Vercel) + DNS + SSL',
+      'Final smoke tests — fiverrstar.com goes LIVE'
+    ],
+    deps:['d13'],
+    isLaunch:true
   },
-  {
-    id:'d26',day:26,duration:1,week:4,
-    name:'Admin: Team + Leads',
-    details:['Team CRUD with rich-text CV editor','Leads inbox: submissions, status tracking (new → contacted → converted/closed)'],
-    deps:['d4','d8']
-  },
-  {
-    id:'d27',day:27,duration:1,week:4,
-    name:'Admin: Users + Payouts',
-    details:['Users management: list, filter by role, suspend/activate','Manual payout initiation','PayPal Payouts API for weekly payouts','Payout history and status'],
-    deps:['d19']
-  },
-  {
-    id:'d28',day:28,duration:1,week:4,
-    name:'Admin: Reports & Dashboard',
-    details:['Platform-wide stats: revenue, sellers, products, orders','Charts: sales, categories, top sellers','Pending approvals counter','Recent activity feed'],
-    deps:['d24','d25','d27']
-  },
-  {id:'m4',day:28,milestone:true,week:4,name:'🎯 All dashboards complete',details:['Final demo before launch']},
-
-  {
-    id:'d29',day:29,duration:1,week:5,
-    name:'Chat & Chatbot',
-    details:['Socket.io server (custom Node entry)','Chat widget (Forethought-inspired)','Active-hours routing (config-driven)','Chat history persistence in DB'],
-    deps:['d1']
-  },
-  {
-    id:'d30',day:30,duration:1,week:5,
-    name:'Polish & Integrations',
-    details:['Trustpilot widget in footer','Newsletter signup (Resend)','SEO: meta, sitemap, robots, JSON-LD','Open Graph images','Image optimization','Copyright fix (©2026)','Mobile responsive sweep','Accessibility pass'],
-    deps:['d7','d14','d28']
-  },
-  {
-    id:'d31',day:31,duration:1,week:5,
-    name:'QA & Pre-Launch',
-    details:['Critical-path testing','Cross-browser testing (Chrome, Safari, Firefox, Edge)','Mobile testing (iOS Safari, Android Chrome)','Lighthouse performance audit','Final bug fixes'],
-    deps:['d29','d30']
-  },
-  {
-    id:'d32',day:32,duration:1,week:5,
-    name:'🚀 LAUNCH',
-    details:['Production deployment (Vercel)','Production DB migration','DNS configuration','SSL certificate','Final smoke tests','Live monitoring','fiverrstar.com goes LIVE'],
-    deps:['d31']
-  },
-  {id:'m5',day:32,milestone:true,week:5,name:'🚀 fiverrstar.com LIVE',details:['Production launch complete']}
+  { id:'m3', day:14, milestone:true, week:2, name:'🚀 fiverrstar.com LIVE', details:['Production launch complete'] }
 ];
 
 function getTask(id){ return tasks.find(t=>t.id===id); }
+
+function buildModules(){
+  document.getElementById('modulesGrid').innerHTML = modules.map(m => `
+    <div class="module-card">
+      <div class="mc-num">${m.n}</div>
+      <h4>${m.title}</h4>
+      <p>${m.desc}</p>
+    </div>
+  `).join('');
+}
 
 function buildGantt(){
   const grid = document.getElementById('gantt');
@@ -830,9 +888,9 @@ function buildGantt(){
   labelStub.textContent = 'Task';
   dayHeader.appendChild(labelStub);
 
-  for(let d=1; d<=32; d++){
+  for(let d=1; d<=TOTAL_DAYS; d++){
     const cell = document.createElement('div');
-    cell.className = 'day-cell' + (d===1 || d===8 || d===15 || d===22 || d===29 ? ' week-start' : '');
+    cell.className = 'day-cell' + (d===1 || d===8 ? ' week-start' : '');
     cell.textContent = 'D'+d;
     dayHeader.appendChild(cell);
   }
@@ -841,19 +899,17 @@ function buildGantt(){
   // Render weeks with their tasks
   let rowIdx = 0;
   weeks.forEach(week => {
-    // Week band label
     const band = document.createElement('div');
     band.className = 'week-band';
     band.dataset.week = week.num;
     const bandLabel = document.createElement('div');
     bandLabel.className = 'band-label';
-    bandLabel.innerHTML = `<span style="color:${weekRaw[week.num]}">WEEK ${week.num}</span> <span>— ${week.name}</span>`;
+    bandLabel.innerHTML = `<span style="color:${weekRaw[week.num]}">WEEK ${week.num}</span> <span>— ${week.name} · Days ${week.startDay}–${week.endDay}</span>`;
     bandLabel.style.borderLeft = `3px solid ${weekRaw[week.num]}`;
     bandLabel.style.paddingLeft = '17px';
     band.appendChild(bandLabel);
     grid.appendChild(band);
 
-    // Tasks for this week
     const weekTasks = tasks.filter(t => t.week === week.num);
     weekTasks.forEach(task => {
       rowIdx++;
@@ -863,7 +919,6 @@ function buildGantt(){
       row.dataset.id = task.id;
       row.dataset.rowIdx = rowIdx;
 
-      // Sticky label
       const label = document.createElement('div');
       label.className = 'task-label';
       if(task.milestone){
@@ -872,30 +927,29 @@ function buildGantt(){
           <div class="task-name" style="color:var(--milestone);font-weight:700">${task.name}</div>
         `;
       } else {
+        const badgeBg = task.isLaunch ? LAUNCH_RAW : weekColors[task.week];
         label.innerHTML = `
-          <div class="task-num" style="background:${weekColors[task.week]}">${task.day}</div>
+          <div class="task-num" style="background:${badgeBg}">${task.day}</div>
           <div class="task-name">${task.name}</div>
         `;
       }
       row.appendChild(label);
 
-      // 32 bar cells
-      for(let d=1; d<=32; d++){
+      for(let d=1; d<=TOTAL_DAYS; d++){
         const cell = document.createElement('div');
         cell.className = 'bar-cell';
         row.appendChild(cell);
       }
 
-      // Bar or milestone marker
       if(!task.milestone){
         const bar = document.createElement('div');
         bar.className = 'bar';
-        // Position: day cell starts at column (task.day+1), with padding
         const left = LABEL_W + (task.day - 1) * W + 4;
         const width = task.duration * W - 8;
         bar.style.left = left + 'px';
         bar.style.width = width + 'px';
-        bar.style.background = `linear-gradient(135deg, ${weekRaw[task.week]}, ${shadeColor(weekRaw[task.week], -25)})`;
+        const baseColor = task.isLaunch ? LAUNCH_RAW : weekRaw[task.week];
+        bar.style.background = `linear-gradient(135deg, ${baseColor}, ${shadeColor(baseColor, -25)})`;
         bar.dataset.id = task.id;
         bar.innerHTML = `<span class="bar-text">${task.name}</span>`;
         bar.addEventListener('mouseenter', e => {
@@ -947,10 +1001,10 @@ function toggleDeps(){
 
 function drawDepArrows(){
   document.querySelectorAll('.dep-svg').forEach(el=>el.remove());
+  if(!showDeps) return;
   const grid = document.getElementById('gantt');
   const svg = document.createElementNS('http://www.w3.org/2000/svg','svg');
   svg.classList.add('dep-svg');
-  const gridRect = grid.getBoundingClientRect();
   svg.style.width = grid.offsetWidth + 'px';
   svg.style.height = grid.offsetHeight + 'px';
 
@@ -966,12 +1020,10 @@ function drawDepArrows(){
       const fromY = fromRow.offsetTop + fromRow.offsetHeight / 2;
       const toY = toRow.offsetTop + toRow.offsetHeight / 2;
 
-      let fromX = LABEL_W + dep.day * W - 4; // right edge of dep bar
-      let toX = LABEL_W + (task.day - 1) * W + 4; // left edge of task bar
+      let fromX = LABEL_W + dep.day * W - 4;
+      let toX = LABEL_W + (task.day - 1) * W + 4;
 
-      // For milestone dep
       if(dep.milestone) fromX = LABEL_W + (dep.day - 1) * W + W/2;
-      // For milestone target
       if(task.milestone) toX = LABEL_W + (task.day - 1) * W + W/2;
 
       const path = document.createElementNS('http://www.w3.org/2000/svg','path');
@@ -983,7 +1035,7 @@ function drawDepArrows(){
       path.setAttribute('stroke', weekRaw[dep.week] || '#4f8cff');
       path.setAttribute('stroke-width','1.5');
       path.setAttribute('stroke-dasharray','5 4');
-      path.setAttribute('opacity','0.25');
+      path.setAttribute('opacity','0.3');
       path.setAttribute('data-from', depId);
       path.setAttribute('data-to', task.id);
       svg.appendChild(path);
@@ -1010,7 +1062,7 @@ function highlightDeps(taskId){
 function clearDepHighlight(){
   document.querySelectorAll('.bar').forEach(b => b.style.filter = '');
   document.querySelectorAll('.dep-svg path').forEach(p => {
-    p.setAttribute('opacity','0.25');
+    p.setAttribute('opacity','0.3');
     p.setAttribute('stroke-dasharray','5 4');
     p.setAttribute('stroke-width','1.5');
   });
@@ -1019,7 +1071,8 @@ function clearDepHighlight(){
 const tooltip = document.getElementById('tooltip');
 function showTooltip(e, task){
   const week = weeks.find(w=>w.num===task.week);
-  let html = `<div class="tt-phase" style="color:${weekRaw[task.week]}">WEEK ${task.week} — ${week.name}</div>`;
+  const accentColor = task.isLaunch ? LAUNCH_RAW : weekRaw[task.week];
+  let html = `<div class="tt-phase" style="color:${accentColor}">WEEK ${task.week} — ${week.name}</div>`;
   html += `<h3>${task.name}</h3>`;
   html += `<div class="tt-day">Day ${task.day}${task.duration>1 ? ' → '+(task.day+task.duration-1) : ''}</div>`;
   if(task.details && task.details.length){
@@ -1047,7 +1100,9 @@ function hideTooltip(){
 }
 
 function filterWeek(week, btn){
-  document.querySelectorAll('.controls .btn').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.controls .btn').forEach(b=>{
+    if(b.id !== 'depBtn') b.classList.remove('active');
+  });
   btn.classList.add('active');
   document.querySelectorAll('.task-row').forEach(row => {
     row.style.display = (week === 'all' || parseInt(row.dataset.week) === week) ? '' : 'none';
@@ -1064,12 +1119,12 @@ function buildStats(){
   const totalDeps = tasks.reduce((a,t)=>a+(t.deps?t.deps.length:0),0);
 
   const stats = [
-    {val:'32',label:'Total Days'},
-    {val:'5',label:'Phases'},
-    {val:totalTasks,label:'Deliverables'},
-    {val:milestones,label:'Milestones'},
-    {val:totalDeps,label:'Dependencies'},
-    {val:'1',label:'Final Launch'}
+    {val:'14', label:'Total Days'},
+    {val:'2',  label:'Weeks'},
+    {val:'6',  label:'Modules'},
+    {val:totalTasks, label:'Deliverables'},
+    {val:milestones, label:'Milestones'},
+    {val:'1',  label:'Final Launch'}
   ];
 
   document.getElementById('statsBar').innerHTML = stats.map(s=>`
@@ -1087,6 +1142,7 @@ function animateProgress(){
   pct.textContent = '0%';
 }
 
+buildModules();
 buildStats();
 buildGantt();
 setTimeout(animateProgress, 300);
