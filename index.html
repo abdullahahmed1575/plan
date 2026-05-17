@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fiverr Star — 2-Week Delivery Plan</title>
+<title>Fiverr Star — 3-Week Delivery Plan</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
@@ -21,6 +21,7 @@
 
     --w1: #4f8cff;
     --w2: #a855f7;
+    --w3: #22c55e;
     --launch: #ef4444;
     --milestone: #fbbf24;
   }
@@ -274,8 +275,8 @@
   /* The grid */
   .gantt-grid {
     display: grid;
-    grid-template-columns: 260px repeat(14, 84px);
-    min-width: 1436px; /* 260 + 14*84 */
+    grid-template-columns: 260px repeat(21, 80px);
+    min-width: 1940px; /* 260 + 21*80 */
     position: relative;
   }
 
@@ -575,7 +576,7 @@
   .footer-bar .fb-fill {
     height: 100%;
     border-radius: 3px;
-    background: linear-gradient(90deg, var(--w1), var(--w2), var(--launch));
+    background: linear-gradient(90deg, var(--w1), var(--w2), var(--w3), var(--launch));
     width: 0%;
     transition: width 0.6s ease;
   }
@@ -601,7 +602,7 @@
     .meta-row, .controls, .legend, .stats-grid, .modules-grid { padding-left: 20px; padding-right: 20px; }
     .stats-grid { grid-template-columns: repeat(2, 1fr); }
     .task-label { padding: 8px 10px; min-width: 160px; }
-    .gantt-grid { grid-template-columns: 160px repeat(14, 64px); min-width: 1056px; }
+    .gantt-grid { grid-template-columns: 160px repeat(21, 60px); min-width: 1420px; }
     .footer-bar { padding: 10px 20px; }
   }
 </style>
@@ -610,14 +611,14 @@
 
 <div class="hero">
   <h1>Fiverr Star</h1>
-  <p>Revised 2-Week Delivery Plan — 14 Days to Launch</p>
+  <p>Revised 3-Week Delivery Plan — 21 Days to Launch</p>
   <div class="scope-note">Simplified scope · No AI integration · <strong>PayPal + Payoneer</strong> only</div>
 </div>
 
 <div class="meta-row">
-  <div class="meta-item"><div class="meta-dot" style="background:var(--w1)"></div><strong>Week 1</strong> Static Pages, Shop & Talent</div>
-  <div class="meta-item"><div class="meta-dot" style="background:var(--w2)"></div><strong>Week 2</strong> Cart, Payments & Dashboards</div>
-  <div class="meta-item"><div class="meta-dot" style="background:var(--launch)"></div><strong>Day 14</strong> Launch</div>
+  <div class="meta-item"><div class="meta-dot" style="background:var(--w1)"></div><strong>Week 1</strong> Static Pages & Talent</div>
+  <div class="meta-item"><div class="meta-dot" style="background:var(--w2)"></div><strong>Week 2</strong> Shop, Cart & Checkout</div>
+  <div class="meta-item"><div class="meta-dot" style="background:var(--w3)"></div><strong>Week 3</strong> Dashboards & Launch</div>
 </div>
 
 <div class="section-title">Core Modules</div>
@@ -627,12 +628,14 @@
   <button class="btn active" onclick="filterWeek('all',this)">All</button>
   <button class="btn" onclick="filterWeek(1,this)">Week 1</button>
   <button class="btn" onclick="filterWeek(2,this)">Week 2</button>
+  <button class="btn" onclick="filterWeek(3,this)">Week 3</button>
   <button class="btn" onclick="toggleDeps()" id="depBtn">Show Dependencies</button>
 </div>
 
 <div class="legend">
   <div class="legend-item"><div class="legend-bar" style="background:var(--w1)"></div>Week 1</div>
   <div class="legend-item"><div class="legend-bar" style="background:var(--w2)"></div>Week 2</div>
+  <div class="legend-item"><div class="legend-bar" style="background:var(--w3)"></div>Week 3</div>
   <div class="legend-item"><div class="legend-bar" style="background:var(--launch)"></div>Launch Day</div>
   <div class="legend-item"><div class="legend-diamond"></div>Milestone</div>
 </div>
@@ -660,10 +663,10 @@
 <div id="tooltip"></div>
 
 <script>
-const W = 84;
+const W = 80;
 const LABEL_W = 260;
 const ROW_H = 52;
-const TOTAL_DAYS = 14;
+const TOTAL_DAYS = 21;
 
 const modules = [
   { n:1, title:'Static Pages', desc:'About Us, Contact, and a dynamic Home page built exactly to UI.' },
@@ -675,22 +678,24 @@ const modules = [
 ];
 
 const weeks = [
-  { num:1, name:'Static Pages, Shop & Talent', color:'#4f8cff', startDay:1, endDay:7 },
-  { num:2, name:'Cart, Payments, Dashboards & Launch', color:'#a855f7', startDay:8, endDay:14 }
+  { num:1, name:'Static Pages & Talent',           color:'#4f8cff', startDay:1,  endDay:7  },
+  { num:2, name:'Shop, Cart & Checkout',           color:'#a855f7', startDay:8,  endDay:14 },
+  { num:3, name:'Dashboards & Launch',             color:'#22c55e', startDay:15, endDay:21 }
 ];
 
-const weekColors = {1:'var(--w1)', 2:'var(--w2)'};
-const weekRaw = {1:'#4f8cff', 2:'#a855f7'};
+const weekColors = {1:'var(--w1)', 2:'var(--w2)', 3:'var(--w3)'};
+const weekRaw    = {1:'#4f8cff',   2:'#a855f7',   3:'#22c55e'};
 const LAUNCH_RAW = '#ef4444';
 
 const tasks = [
+  /* ───────────── Week 1 — Static Pages & Talent ───────────── */
   {
     id:'d1', day:1, duration:1, week:1,
     name:'Core Setup',
     details:[
       'Database + schema deployment',
       'User accounts (register, login, logout, password reset)',
-      'Responsive header with role-aware nav + mobile drawer',
+      'Header with role-aware nav + dropdown menus',
       'Footer (links, socials, newsletter placeholder)',
       'Light/dark theme system',
       'Toast notifications + base UI components'
@@ -735,56 +740,90 @@ const tasks = [
   },
   {
     id:'d5', day:5, duration:1, week:1,
+    name:'Talent Profiles — Listing',
+    details:[
+      'Public talent index at /talent',
+      'Card grid: photo, name, headline, top skills',
+      'Filter & search by skill / category',
+      'Linked from About → "Read more" CTAs'
+    ],
+    deps:['d3']
+  },
+  {
+    id:'d6', day:6, duration:1, week:1,
+    name:'Talent Profiles — Detail Page',
+    details:[
+      'Detail page at /talent/[slug]',
+      'Bio, experience, skills, portfolio gallery',
+      '"Contact this talent" form → leads inbox',
+      'Placeholder section for "More from this designer" (wired to shop in Week 2)'
+    ],
+    deps:['d4','d5']
+  },
+  {
+    id:'d7', day:7, duration:1, week:1,
+    name:'Static Pages Polish + SEO Base',
+    details:[
+      'Footer pages: Terms, Privacy, FAQ',
+      'Responsive sweep across all static pages',
+      'Base SEO: meta tags, sitemap, robots, JSON-LD',
+      'Open Graph image defaults',
+      'Internal preview link shared with client'
+    ],
+    deps:['d2','d3','d4','d6']
+  },
+  { id:'m1', day:7, milestone:true, week:1, name:'🎯 Marketing site + Talent live', details:['Static pages and talent profiles ready for client review'] },
+
+  /* ───────────── Week 2 — Shop, Cart & Checkout ───────────── */
+  {
+    id:'d8', day:8, duration:1, week:2,
     name:'Shop Layout & Listing',
     details:[
       'Envato-style shop layout (centered search, sidebar categories)',
       'Product card grid with hover preview',
       'Bottom action bar (cart, login, favorites, menu)',
-      'Pagination / infinite scroll',
       'Pulls live data from contributor uploads'
     ],
     deps:['d1']
   },
   {
-    id:'d6', day:6, duration:1, week:1,
-    name:'Shop Filters + Product Detail',
+    id:'d9', day:9, duration:1, week:2,
+    name:'Shop Filters & Search',
     details:[
       'Filter sidebar: Style, Color, Orientation, Format, Price',
+      'Multi-select filter chips',
       'URL-synced filter state (shareable links)',
       'Search bar with category scoping',
-      'Product detail page: gallery, description, format & license',
-      '"Add to Cart" + "Work with Designer" CTAs'
+      'Pagination / infinite scroll'
     ],
-    deps:['d5']
+    deps:['d8']
   },
   {
-    id:'d7', day:7, duration:1, week:1,
-    name:'Talent Profiles',
+    id:'d10', day:10, duration:1, week:2,
+    name:'Product Detail Page',
     details:[
-      'Public designer/talent page at /talent/[slug]',
-      'Bio, skills, experience, portfolio gallery',
-      '"Contact this talent" form → leads inbox',
-      '"More from this designer" row tied to shop',
-      'Linked from About → team and Product → seller'
+      'Image gallery with zoom',
+      'Title, description, price, format details',
+      'License terms + file-type info',
+      '"Add to Cart" + "Work with Designer" CTAs',
+      'Related products + "More from this seller" (now wired to talent profile)'
     ],
-    deps:['d3','d6']
+    deps:['d6','d8']
   },
-  { id:'m1', day:7, milestone:true, week:1, name:'🎯 Marketing site + Shop browsable', details:['Static pages, shop listing/filtering, and talent profiles all live in preview'] },
-
   {
-    id:'d8', day:8, duration:1, week:2,
+    id:'d11', day:11, duration:1, week:2,
     name:'Shopping Cart',
     details:[
       'Cart page: line items, quantity, subtotal',
       'Cookie-backed for guests, DB-backed for logged-in users',
       'Slide-in cart drawer with add-to-cart animations',
       'Favorites / wishlist',
-      'Empty states + mobile cart UX'
+      'Empty states'
     ],
-    deps:['d6']
+    deps:['d10']
   },
   {
-    id:'d9', day:9, duration:1, week:2,
+    id:'d12', day:12, duration:1, week:2,
     name:'Checkout — PayPal + Payoneer',
     details:[
       'Checkout page: cart summary + billing form',
@@ -794,10 +833,10 @@ const tasks = [
       'Silent account creation on first successful payment',
       'Sandbox testing for both providers'
     ],
-    deps:['d8']
+    deps:['d11']
   },
   {
-    id:'d10', day:10, duration:1, week:2,
+    id:'d13', day:13, duration:1, week:2,
     name:'Order Confirmation + Downloads',
     details:[
       'Order success page with summary',
@@ -805,62 +844,106 @@ const tasks = [
       'Secure downloads page at /orders/[id]/downloads',
       'Account-activation email for guest buyers (Etsy-style)'
     ],
-    deps:['d9']
+    deps:['d12']
   },
-  { id:'m2', day:10, milestone:true, week:2, name:'🎯 End-to-end purchase tested', details:['Buyer can browse → cart → pay (PayPal & Payoneer) → download'] },
-
   {
-    id:'d11', day:11, duration:1, week:2,
-    name:'Designer Dashboard — Profile & Uploads',
+    id:'d14', day:14, duration:1, week:2,
+    name:'Buyer-Side QA & Polish',
     details:[
-      'Dashboard home: sales, approvals, earnings snapshot',
-      'Profile/settings: bio, banner, PayPal/Payoneer payout email',
-      'Content management: products list with status badges',
-      'Upload form with category & filter pickers',
-      'Media library for reusable assets'
+      'Critical-path test: browse → filter → cart → pay → download',
+      'Both PayPal & Payoneer flows verified end-to-end',
+      'Cart edge cases (guest → login merge, empty states)',
+      'Bug fixes from internal testing'
     ],
-    deps:['d1','d5']
+    deps:['d13']
+  },
+  { id:'m2', day:14, milestone:true, week:2, name:'🎯 End-to-end purchase tested', details:['Buyer journey works: browse → cart → pay (PayPal & Payoneer) → download'] },
+
+  /* ───────────── Week 3 — Dashboards & Launch ───────────── */
+  {
+    id:'d15', day:15, duration:1, week:3,
+    name:'Designer Dashboard — Home & Profile',
+    details:[
+      'Dashboard overview: sales, approvals, earnings snapshot',
+      'Profile/settings: bio, banner, avatar',
+      'PayPal & Payoneer payout email fields',
+      'Notification preferences'
+    ],
+    deps:['d1']
   },
   {
-    id:'d12', day:12, duration:1, week:2,
+    id:'d16', day:16, duration:1, week:3,
+    name:'Designer Dashboard — Uploads & Content',
+    details:[
+      'Products list with status badges (pending / approved / rejected)',
+      'Upload form with category & filter pickers',
+      'Edit / delete products',
+      'Media library for reusable assets',
+      'Daily upload limit (configurable)'
+    ],
+    deps:['d10','d15']
+  },
+  {
+    id:'d17', day:17, duration:1, week:3,
     name:'Designer Dashboard — Orders & Payments',
     details:[
       'Orders received: buyer, product, amount, date, status',
       'Order history with filters and CSV export',
-      'Reviews & ratings (read + reply)',
       'Earnings + payout schedule view',
+      'Reviews & ratings (read + reply)',
       'Customer messages from "Work with Designer" CTA'
     ],
-    deps:['d10','d11']
+    deps:['d13','d16']
   },
   {
-    id:'d13', day:13, duration:1, week:2,
-    name:'Admin Dashboard',
+    id:'d18', day:18, duration:1, week:3,
+    name:'Admin Dashboard — Approvals & Users',
     details:[
-      'Approvals queue for contributor uploads (preview + approve/reject with reason)',
+      'Approvals queue for contributor uploads',
+      'Preview + approve/reject with reason + bulk actions',
       'Users management: list, filter by role, suspend/activate',
-      'Talent CRUD (manage public talent profiles + bios)',
-      'Leads inbox (Contact form + Talent contact form)',
+      'Activity feed of recent platform events'
+    ],
+    deps:['d16']
+  },
+  {
+    id:'d19', day:19, duration:1, week:3,
+    name:'Admin Dashboard — Talent, Leads & Payouts',
+    details:[
+      'Talent CRUD (manage public talent profiles + bios + portfolio)',
+      'Leads inbox (Contact form + Talent contact form) with status tracking',
       'Payouts: PayPal Payouts + Payoneer manual/scheduled',
+      'Payout history and status',
       'Platform-wide stats: revenue, sellers, products, orders'
     ],
-    deps:['d4','d7','d11','d12']
+    deps:['d6','d18']
   },
   {
-    id:'d14', day:14, duration:1, week:2,
-    name:'🚀 QA, Polish & Launch',
+    id:'d20', day:20, duration:1, week:3,
+    name:'Final QA, Polish & Pre-Launch',
     details:[
-      'Critical-path testing (browse → buy → download → admin moderate)',
-      'Cross-browser (Chrome, Safari, Firefox, Edge) + mobile sweep',
-      'SEO: meta, sitemap, robots, JSON-LD, OG images',
-      'Lighthouse pass + image optimization',
-      'Production deploy (Vercel) + DNS + SSL',
-      'Final smoke tests — fiverrstar.com goes LIVE'
+      'Full cross-browser pass (Chrome, Safari, Firefox, Edge)',
+      'Lighthouse audit + image optimization',
+      'Final SEO sweep + OG images per page',
+      'Accessibility pass + final bug fixes'
     ],
-    deps:['d13'],
+    deps:['d14','d17','d19']
+  },
+  {
+    id:'d21', day:21, duration:1, week:3,
+    name:'🚀 LAUNCH',
+    details:[
+      'Production deployment (Vercel)',
+      'Production DB migration',
+      'DNS configuration + SSL certificate',
+      'Final smoke tests in production',
+      'Live monitoring set up',
+      'fiverrstar.com goes LIVE'
+    ],
+    deps:['d20'],
     isLaunch:true
   },
-  { id:'m3', day:14, milestone:true, week:2, name:'🚀 fiverrstar.com LIVE', details:['Production launch complete'] }
+  { id:'m3', day:21, milestone:true, week:3, name:'🚀 fiverrstar.com LIVE', details:['Production launch complete'] }
 ];
 
 function getTask(id){ return tasks.find(t=>t.id===id); }
@@ -890,7 +973,7 @@ function buildGantt(){
 
   for(let d=1; d<=TOTAL_DAYS; d++){
     const cell = document.createElement('div');
-    cell.className = 'day-cell' + (d===1 || d===8 ? ' week-start' : '');
+    cell.className = 'day-cell' + (d===1 || d===8 || d===15 ? ' week-start' : '');
     cell.textContent = 'D'+d;
     dayHeader.appendChild(cell);
   }
@@ -1119,8 +1202,8 @@ function buildStats(){
   const totalDeps = tasks.reduce((a,t)=>a+(t.deps?t.deps.length:0),0);
 
   const stats = [
-    {val:'14', label:'Total Days'},
-    {val:'2',  label:'Weeks'},
+    {val:'21', label:'Total Days'},
+    {val:'3',  label:'Weeks'},
     {val:'6',  label:'Modules'},
     {val:totalTasks, label:'Deliverables'},
     {val:milestones, label:'Milestones'},
